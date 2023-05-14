@@ -5,10 +5,12 @@ import { ConfigService } from '@nestjs/config';
 import { TelegramUpdate } from './telegram.update';
 import { TelegramService } from './telegram.service';
 import { UserModule } from 'src/user/user.module';
+import { DialogModule } from 'src/dialog/dialog.module';
 
 @Module({
   imports: [
     UserModule,
+    DialogModule,
     TelegrafModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({

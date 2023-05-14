@@ -11,7 +11,6 @@ export class TelegramUpdate {
 
   @On('message')
   onMessage(@Ctx() ctx: Context) {
-    console.log(ctx.update);
     return this.telegramService.onMessage(ctx);
   }
 }

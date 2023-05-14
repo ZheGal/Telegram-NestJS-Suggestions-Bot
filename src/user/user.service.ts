@@ -9,7 +9,7 @@ export class UserService {
     @InjectRepository(User) private userRepository: Repository<User>,
   ) {}
 
-  async checkAndCreateUpdateUser(user: any) {
+  async checkAndCreateUpdateUser(user: any): Promise<User> {
     const { id } = user;
     const find = await this.userRepository.findOne({
       where: { id },
@@ -20,6 +20,6 @@ export class UserService {
     }
     Object.assign(find, user);
     await this.userRepository.save(find);
-    console.log('check and create user', user);
+    return user;
   }
 }
